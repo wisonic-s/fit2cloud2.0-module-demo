@@ -30,21 +30,21 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 模型对象 -->
-        <javaModelGenerator targetPackage="com.fit2cloud.demo.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.fit2cloud.cache.domain" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- XML映射文件 -->
-        <sqlMapGenerator targetPackage="com.fit2cloud.demo.dao" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.fit2cloud.cache.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fit2cloud.demo.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fit2cloud.cache.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!--要生成的数据库表 -->
-        <table tableName="demo"/>
+        <table tableName="cache_cloud_account"/>
     </context>
 </generatorConfiguration>

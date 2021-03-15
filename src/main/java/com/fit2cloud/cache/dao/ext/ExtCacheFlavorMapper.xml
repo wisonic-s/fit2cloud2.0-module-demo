@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fit2cloud.cache.dao.ext.ExtCacheFlavorMapper">
+  <resultMap id="baseMap" type="com.fit2cloud.cache.model.FlavorDTO"
+             extends="com.fit2cloud.cache.dao.CacheFlavorMapper.BaseResultMap">
+    <result column="workspace_name" jdbcType="VARCHAR" property="workspaceName"/>
+  </resultMap>
+  <select id="listFlavors" resultMap="baseMap">
+    select
+      *,
+      workspace.name workspace_name
+     from cache_flavor
+    left join
+         workspace on workspace.id = cache_flavor.workspace
+    <where>
+        <if test="param.workspaceId = null">
+            and workspace.id = #{param.workspaceId,jdbcType=VARCHAR}
+        </if>
+    </where>
+  </select>
+</mapper>

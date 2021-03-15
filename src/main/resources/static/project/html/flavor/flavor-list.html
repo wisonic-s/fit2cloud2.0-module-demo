@@ -1,0 +1,99 @@
+<div layout-fill ng-controller="FlavorListCtrl" class="content-backdrop" ng-cloak>
+    <div cg-busy="{promise:loadingLayer,minDuration:500}" layout="column" layout-fill>
+        <md-toolbar class="content-toolbar">
+            <div class="md-toolbar-tools">
+                <div>Redis {{'i18n_list' | translator:'列表'}}</div>
+                <md-button has-permissions="REDIS:READ+GRANT" class="md-primary" ng-click="grantInstances()">
+                    <md-icon>how_to_reg</md-icon>
+                    {{'i18n_authorize' | translator:'授权'}}
+                </md-button>
+                <md-button has-permissions="REDIS:READ+ADD" class="md-primary" ng-click="createInstance()">
+                    <md-icon>add</md-icon>
+                    {{'i18n_create' | translator:'创建'}}
+                </md-button>
+
+                <md-button has-permissions="REDIS:READ+DELETE" class="md-primary" ng-click="batchDelete()">
+                    <md-icon>delete</md-icon>
+                    {{'i18n_Bulk_delete' | translator:'批量删除'}}
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div layout="row" flex>
+            <div class="md-padding" layout="column" flex="100">
+                <filter-tools conditions="conditions" results="filters" search="'true'" execute="list()">
+                    <select-columns columns="columns"></select-columns>
+                    <div class="filter-item">
+                        <md-button class="md-icon-button md-whiteframe-1dp" ng-click="list()">
+                            <md-tooltip md-delay="300">{{'i18n_refresh' | translator:'刷新'}}</md-tooltip>
+                            <md-icon>refresh</md-icon>
+                        </md-button>
+                    </div>
+                </filter-tools>
+
+                <div flex layout="column" layout-fill>
+                    <table dynamic-table columns="columns" execute="list({sql: sql})">
+                        <tbody>
+                        <tr ng-repeat="item in items"
+                            ng-class="{'tr-selected':selected === item.$$hashKey}">
+                            <td has-permissions="REDIS:READ+GRANT,REDIS:READ+DELETE">
+                                <md-checkbox md-no-ink aria-label="{{'i18n_choice' | translator:'选择'}}"
+                                             ng-model="item.enable"
+                                             class="md-primary"></md-checkbox>
+                            </td>
+                            <td>
+                                <a class="md-primary text-click">
+                                    {{item.instanceName}}
+                                </a>
+                            </td>
+                            <td>
+                                <workspace-info id="item.workspaceId" ng-if="item.workspaceId!=null"></workspace-info>
+                            </td>
+                            <td ng-bind="item.accountName"></td>
+                            <td ng-bind="item.region"></td>
+                            <td ng-bind="item.vpcName"></td>
+                            <td ng-bind="item.engine"></td>
+                            <td ng-bind="item.engineVersion"></td>
+                            <td ng-bind="item.instanceType"></td>
+                            <td ng-switch="item.status">
+                                <span ng-switch-when="Running">{{'i18n_running' | translator:'运行中'}}</span>
+                                <span ng-switch-when="Deleted">{{'i18n_deleted' | translator:'已删除'}}</span>
+                                <span ng-switch-when="Deleted">{{'i18n_creating' | translator:'创建中'}}</span>
+                                <span ng-switch-when="Restarting">
+                                    <button class="order-button order-button-processing">
+                                        <i class="fas fa-sync-alt fa-spin"></i> {{'i18n_Restarting' | translator:'重启中'}}...
+                                    </button>
+                                </span>
+                            </td>
+                            <td ng-bind="item.chargingMode === 0 ? '{{'i18n_Pay_as_you_go' | translator:'按量付费'}}': '{{'i18n_Annual_package' | translator:'包年包月'}}'"></td>
+                            <td ng-bind="item.ip"></td>
+                            <td ng-bind="item.port"></td>
+                            <td>
+                                {{item.createTime | date:'yyyy-MM-dd HH:mm'}}
+                            </td>
+                            <td>
+                                <table-menus>
+                                    <md-menu-item has-permission="REDIS:READ+DELETE">
+                                        <md-button ng-click="delete(item.id)" ng-disabled="item.status == 'Deleted'">
+                                            <md-icon class="md-18">delete</md-icon>
+                                            {{'i18n_process_btn_delete' | translator:'删除'}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item has-permission="REDIS:READ+REBOOT">
+                                        <md-button ng-click="restart(item.id)" ng-disabled="item.status != 'Running'">
+                                            <md-icon class="md-18">refresh</md-icon>
+                                            {{'i18n_restart' | translator:'重启'}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </table-menus>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table-pagination pagination="pagination"></table-pagination>
+                </div>
+            </div>
+            <info-form width="40%"></info-form>
+        </div>
+    </div>
+    <side-form></side-form>
+</div>
