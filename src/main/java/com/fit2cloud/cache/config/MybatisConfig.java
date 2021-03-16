@@ -25,7 +25,7 @@ import java.util.Properties;
  * 2）创建SqlSessionFactory
  */
 @Configuration    //该注解类似于spring配置文件
-@MapperScan(basePackages = {"com.fit2cloud.cache.dao.primary"}, sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(basePackages = {"com.fit2cloud.cache.dao"}, sqlSessionFactoryRef = "sqlSessionFactory")
 @EnableTransactionManagement
 public class MybatisConfig {
 

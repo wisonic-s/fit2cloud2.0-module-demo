@@ -11,7 +11,7 @@ public class CacheFlavor implements Serializable {
     private String workspace;
 
     @ApiModelProperty("")
-    private String instaneType;
+    private String instanceType;
 
     @ApiModelProperty("")
     private String engine;
@@ -37,12 +37,12 @@ public class CacheFlavor implements Serializable {
         this.workspace = workspace == null ? null : workspace.trim();
     }
 
-    public String getInstaneType() {
-        return instaneType;
+    public String getInstanceType() {
+        return instanceType;
     }
 
-    public void setInstaneType(String instaneType) {
-        this.instaneType = instaneType == null ? null : instaneType.trim();
+    public void setInstanceType(String instanceType) {
+        this.instanceType = instanceType == null ? null : instanceType.trim();
     }
 
     public String getEngine() {

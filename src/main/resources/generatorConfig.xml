@@ -45,6 +45,6 @@
         </javaClientGenerator>
 
         <!--要生成的数据库表 -->
-        <table tableName="cache_cloud_account"/>
+        <table tableName="cache_flavor"/>
     </context>
 </generatorConfiguration>

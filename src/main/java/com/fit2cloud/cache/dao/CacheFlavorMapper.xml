@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fit2cloud.cache.domain.CacheFlavor">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="workspace" jdbcType="VARCHAR" property="workspace" />
-    <result column="instane_type" jdbcType="VARCHAR" property="instaneType" />
+    <result column="instance_type" jdbcType="VARCHAR" property="instanceType" />
     <result column="engine" jdbcType="VARCHAR" property="engine" />
     <result column="engine_version" jdbcType="VARCHAR" property="engineVersion" />
   </resultMap>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, workspace, instane_type, engine, engine_version
+    id, workspace, instance_type, engine, engine_version
   </sql>
   <select id="selectByExample" parameterType="com.fit2cloud.cache.domain.CacheFlavorExample" resultMap="BaseResultMap">
     select
@@ -100,9 +100,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fit2cloud.cache.domain.CacheFlavor">
-    insert into cache_flavor (id, workspace, instane_type, 
+    insert into cache_flavor (id, workspace, instance_type, 
       engine, engine_version)
-    values (#{id,jdbcType=VARCHAR}, #{workspace,jdbcType=VARCHAR}, #{instaneType,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{workspace,jdbcType=VARCHAR}, #{instanceType,jdbcType=VARCHAR}, 
       #{engine,jdbcType=VARCHAR}, #{engineVersion,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fit2cloud.cache.domain.CacheFlavor">
@@ -114,8 +114,8 @@
       <if test="workspace != null">
         workspace,
       </if>
-      <if test="instaneType != null">
-        instane_type,
+      <if test="instanceType != null">
+        instance_type,
       </if>
       <if test="engine != null">
         engine,
@@ -131,8 +131,8 @@
       <if test="workspace != null">
         #{workspace,jdbcType=VARCHAR},
       </if>
-      <if test="instaneType != null">
-        #{instaneType,jdbcType=VARCHAR},
+      <if test="instanceType != null">
+        #{instanceType,jdbcType=VARCHAR},
       </if>
       <if test="engine != null">
         #{engine,jdbcType=VARCHAR},
@@ -157,8 +157,8 @@
       <if test="record.workspace != null">
         workspace = #{record.workspace,jdbcType=VARCHAR},
       </if>
-      <if test="record.instaneType != null">
-        instane_type = #{record.instaneType,jdbcType=VARCHAR},
+      <if test="record.instanceType != null">
+        instance_type = #{record.instanceType,jdbcType=VARCHAR},
       </if>
       <if test="record.engine != null">
         engine = #{record.engine,jdbcType=VARCHAR},
@@ -175,7 +175,7 @@
     update cache_flavor
     set id = #{record.id,jdbcType=VARCHAR},
       workspace = #{record.workspace,jdbcType=VARCHAR},
-      instane_type = #{record.instaneType,jdbcType=VARCHAR},
+      instance_type = #{record.instanceType,jdbcType=VARCHAR},
       engine = #{record.engine,jdbcType=VARCHAR},
       engine_version = #{record.engineVersion,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -188,8 +188,8 @@
       <if test="workspace != null">
         workspace = #{workspace,jdbcType=VARCHAR},
       </if>
-      <if test="instaneType != null">
-        instane_type = #{instaneType,jdbcType=VARCHAR},
+      <if test="instanceType != null">
+        instance_type = #{instanceType,jdbcType=VARCHAR},
       </if>
       <if test="engine != null">
         engine = #{engine,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
   <update id="updateByPrimaryKey" parameterType="com.fit2cloud.cache.domain.CacheFlavor">
     update cache_flavor
     set workspace = #{workspace,jdbcType=VARCHAR},
-      instane_type = #{instaneType,jdbcType=VARCHAR},
+      instance_type = #{instanceType,jdbcType=VARCHAR},
       engine = #{engine,jdbcType=VARCHAR},
       engine_version = #{engineVersion,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}

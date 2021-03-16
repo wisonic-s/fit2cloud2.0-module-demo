@@ -7,11 +7,10 @@
                     <md-icon>how_to_reg</md-icon>
                     {{'i18n_authorize' | translator:'授权'}}
                 </md-button>
-                <md-button has-permissions="REDIS:READ+ADD" class="md-primary" ng-click="createInstance()">
+                <md-button has-permission="FLAVOR:READ" class="md-primary" ng-click="createInstance()">
                     <md-icon>add</md-icon>
                     {{'i18n_create' | translator:'创建'}}
                 </md-button>
-
                 <md-button has-permissions="REDIS:READ+DELETE" class="md-primary" ng-click="batchDelete()">
                     <md-icon>delete</md-icon>
                     {{'i18n_Bulk_delete' | translator:'批量删除'}}
@@ -35,41 +34,15 @@
                         <tbody>
                         <tr ng-repeat="item in items"
                             ng-class="{'tr-selected':selected === item.$$hashKey}">
-                            <td has-permissions="REDIS:READ+GRANT,REDIS:READ+DELETE">
+                            <td>
                                 <md-checkbox md-no-ink aria-label="{{'i18n_choice' | translator:'选择'}}"
                                              ng-model="item.enable"
                                              class="md-primary"></md-checkbox>
                             </td>
-                            <td>
-                                <a class="md-primary text-click">
-                                    {{item.instanceName}}
-                                </a>
-                            </td>
-                            <td>
-                                <workspace-info id="item.workspaceId" ng-if="item.workspaceId!=null"></workspace-info>
-                            </td>
-                            <td ng-bind="item.accountName"></td>
-                            <td ng-bind="item.region"></td>
-                            <td ng-bind="item.vpcName"></td>
+                            <td>{{item.instanceType}}</td>
+                            <td ng-bind="item.workspaceName"></td>
                             <td ng-bind="item.engine"></td>
                             <td ng-bind="item.engineVersion"></td>
-                            <td ng-bind="item.instanceType"></td>
-                            <td ng-switch="item.status">
-                                <span ng-switch-when="Running">{{'i18n_running' | translator:'运行中'}}</span>
-                                <span ng-switch-when="Deleted">{{'i18n_deleted' | translator:'已删除'}}</span>
-                                <span ng-switch-when="Deleted">{{'i18n_creating' | translator:'创建中'}}</span>
-                                <span ng-switch-when="Restarting">
-                                    <button class="order-button order-button-processing">
-                                        <i class="fas fa-sync-alt fa-spin"></i> {{'i18n_Restarting' | translator:'重启中'}}...
-                                    </button>
-                                </span>
-                            </td>
-                            <td ng-bind="item.chargingMode === 0 ? '{{'i18n_Pay_as_you_go' | translator:'按量付费'}}': '{{'i18n_Annual_package' | translator:'包年包月'}}'"></td>
-                            <td ng-bind="item.ip"></td>
-                            <td ng-bind="item.port"></td>
-                            <td>
-                                {{item.createTime | date:'yyyy-MM-dd HH:mm'}}
-                            </td>
                             <td>
                                 <table-menus>
                                     <md-menu-item has-permission="REDIS:READ+DELETE">

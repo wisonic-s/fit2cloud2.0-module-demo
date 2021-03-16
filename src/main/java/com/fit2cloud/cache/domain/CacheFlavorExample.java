@@ -244,73 +244,73 @@ public class CacheFlavorExample {
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeIsNull() {
-            addCriterion("instane_type is null");
+        public Criteria andInstanceTypeIsNull() {
+            addCriterion("instance_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeIsNotNull() {
-            addCriterion("instane_type is not null");
+        public Criteria andInstanceTypeIsNotNull() {
+            addCriterion("instance_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeEqualTo(String value) {
-            addCriterion("instane_type =", value, "instaneType");
+        public Criteria andInstanceTypeEqualTo(String value) {
+            addCriterion("instance_type =", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeNotEqualTo(String value) {
-            addCriterion("instane_type <>", value, "instaneType");
+        public Criteria andInstanceTypeNotEqualTo(String value) {
+            addCriterion("instance_type <>", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeGreaterThan(String value) {
-            addCriterion("instane_type >", value, "instaneType");
+        public Criteria andInstanceTypeGreaterThan(String value) {
+            addCriterion("instance_type >", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("instane_type >=", value, "instaneType");
+        public Criteria andInstanceTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("instance_type >=", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeLessThan(String value) {
-            addCriterion("instane_type <", value, "instaneType");
+        public Criteria andInstanceTypeLessThan(String value) {
+            addCriterion("instance_type <", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeLessThanOrEqualTo(String value) {
-            addCriterion("instane_type <=", value, "instaneType");
+        public Criteria andInstanceTypeLessThanOrEqualTo(String value) {
+            addCriterion("instance_type <=", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeLike(String value) {
-            addCriterion("instane_type like", value, "instaneType");
+        public Criteria andInstanceTypeLike(String value) {
+            addCriterion("instance_type like", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeNotLike(String value) {
-            addCriterion("instane_type not like", value, "instaneType");
+        public Criteria andInstanceTypeNotLike(String value) {
+            addCriterion("instance_type not like", value, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeIn(List<String> values) {
-            addCriterion("instane_type in", values, "instaneType");
+        public Criteria andInstanceTypeIn(List<String> values) {
+            addCriterion("instance_type in", values, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeNotIn(List<String> values) {
-            addCriterion("instane_type not in", values, "instaneType");
+        public Criteria andInstanceTypeNotIn(List<String> values) {
+            addCriterion("instance_type not in", values, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeBetween(String value1, String value2) {
-            addCriterion("instane_type between", value1, value2, "instaneType");
+        public Criteria andInstanceTypeBetween(String value1, String value2) {
+            addCriterion("instance_type between", value1, value2, "instanceType");
             return (Criteria) this;
         }
 
-        public Criteria andInstaneTypeNotBetween(String value1, String value2) {
-            addCriterion("instane_type not between", value1, value2, "instaneType");
+        public Criteria andInstanceTypeNotBetween(String value1, String value2) {
+            addCriterion("instance_type not between", value1, value2, "instanceType");
             return (Criteria) this;
         }
 

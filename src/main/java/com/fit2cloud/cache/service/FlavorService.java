@@ -1,4 +1,4 @@
-package com.fit2cloud.cache;
+package com.fit2cloud.cache.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fit2cloud.cache.dao.CacheCloudAccountMapper;
@@ -6,7 +6,6 @@ import com.fit2cloud.cache.dao.CacheFlavorMapper;
 import com.fit2cloud.cache.dao.ext.ExtCacheFlavorMapper;
 import com.fit2cloud.cache.domain.CacheCloudAccount;
 import com.fit2cloud.cache.domain.CacheFlavor;
-import com.fit2cloud.cache.domain.CacheFlavorExample;
 import com.fit2cloud.cache.model.FlavorDTO;
 import com.fit2cloud.cache.model.request.ListFlavorRequest;
 import com.fit2cloud.commons.utils.UUIDUtil;
@@ -49,7 +48,7 @@ public class FlavorService {
                         CacheFlavor cacheFlavor = new CacheFlavor();
                         cacheFlavor.setId(UUIDUtil.newUUID());
                         cacheFlavor.setEngine(item.getEngine());
-                        cacheFlavor.setInstaneType(item.getSpecCode());
+                        cacheFlavor.setInstanceType(item.getSpecCode());
                         cacheFlavor.setEngineVersion(item.getEngineVersion());
                         cacheFlavorMapper.insert(cacheFlavor);
                     });
